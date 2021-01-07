@@ -217,6 +217,7 @@ def user_stats(df):
 
     
 def display_data(df, current_line):
+    
     '''Displays five lines of data if the user specifies that they would like to.
     After displaying five lines, ask the user if they would like to see five more.
     Continues asking until they say stop.
@@ -244,14 +245,16 @@ def display_data(df, current_line):
 
 def main():
     while True:
-        city, month, day = get_filters()
-        df = load_data(city, month, day)
+        city, month, day = get_filters() #filter city, days, months
+        df = load_data(city, month, day) #load dataframes
 
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
+        
         # Display five lines of data at a time if user specifies that they would like to
+        
         display_data(df, 0)
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
