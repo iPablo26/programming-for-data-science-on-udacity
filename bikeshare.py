@@ -8,6 +8,7 @@ CITY_DATA = {'Chicago': 'chicago.csv',
 
 
 def get_filters():
+    
     """
     Asks user to specify a city, month, and day to analyze.
     Returns:
@@ -64,9 +65,11 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     # load data file into a dataframe
+    
     df = pd.read_csv(CITY_DATA[city])
 
     # convert the Start Time column to datetime
+    
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
     # extract month and day of week from Start Time to create new columns
@@ -91,6 +94,7 @@ def load_data(city, month, day):
     return df
 
 def time_stats(df):
+    
     """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
@@ -107,8 +111,6 @@ def time_stats(df):
     popular_day = df['day_of_week'].mode()[0]
     print('Most Common day:', popular_day)
 
-
-
     # TO DO: display the most common start hour
 
     df['hour'] = df['Start Time'].dt.hour
@@ -123,6 +125,7 @@ def time_stats(df):
 
 
 def station_stats(df):
+    
     """Displays statistics on the most popular stations and trip."""
 
     print('\nCalculating The Most Popular Stations and Trip...\n')
@@ -173,6 +176,7 @@ def trip_duration_stats(df):
 
 
 def user_stats(df):
+    
     """Displays statistics on bikeshare users."""
 
     print('\nCalculating User Stats...\n')
@@ -230,6 +234,7 @@ def display_data(df, current_line):
             function again (recursive)
         If the user says no then this function returns, but without any value
     '''
+    
     display = input('\nWould you like to view individual trip data?'
                     ' Type \'yes\' or \'no\'.\n')
     display = display.lower()
